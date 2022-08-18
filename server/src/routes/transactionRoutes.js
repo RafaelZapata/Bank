@@ -1,6 +1,13 @@
+import Token from "utilities/token";
 import TransactionController from "controllers/transactionController";
 
-export default function TransactionRoutes(app) {
-  app.get("/transaction", TransactionController.list);
-  app.post("/transaction", TransactionController.insert);
+export default function UserTransactionRoutes(app) {
+  app.get(
+    "/transaction/:id",
+    Token.authorize,
+    Token.admin,
+    TransactionController.list
+  );
+  app.get("/transaction/", Token.authorizeUser, TransactionController.listAll);
+  app.post("/transaction", Token.authorizeUser, TransactionController.insert);
 }
