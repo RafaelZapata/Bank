@@ -1,6 +1,6 @@
-import UserController from "controllers/UserController";
+import UserController from "controllers/userController";
 
-export default function userRoutes(app) {
-  app.get("/user", UserController.list);
+export default function UserRoutes(app) {
+  app.get("/user/:id", UserController.get);
   app.post("/user", UserController.insert);
 }

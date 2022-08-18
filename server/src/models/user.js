@@ -1,10 +1,9 @@
 export default class User {
   constructor(data) {
-    const { name, email, password, balance, role } = data;
+    const { name, email, password } = data;
 
-    if (role !== "admin") role = "user";
-
-    balance = 0;
+    data.balance = data.balance ? data.balance : 0;
+    data.role = data.role !== "admin" ? "user" : data.role;
 
     if ([typeof name, typeof email, typeof password].includes("undefined"))
       throw new Error("Invalid client properties");

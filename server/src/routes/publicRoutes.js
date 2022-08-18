@@ -1,6 +1,6 @@
-import Public from "controllers/public";
+import PublicController from "controllers/publicController";
 
-export default function RublicRoutes(app) {
-  app.get("/", Public.home);
-  app.get("*", Public.notFound);
+export default function PublicRoutes(app) {
+  app.get("/", PublicController.home);
+  app.get("*", PublicController.notFound);
 }
