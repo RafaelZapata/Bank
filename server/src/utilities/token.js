@@ -44,8 +44,8 @@ export default class Token {
     }
   }
 
-  static async admin(req, res, next) {
-    if (req.auth.role !== "admin")
+  static async banker(req, res, next) {
+    if (req.auth.role !== "banker")
       return res.status(401).json(Codes.get(401));
 
     return next();

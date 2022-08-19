@@ -6,7 +6,7 @@ import Token from "utilities/token";
 export default function BankerRoutes(app) {
   app.group("/banker", router => {
     router.use(Token.authorize);
-    router.use(Token.admin);
+    router.use(Token.banker);
 
     router.get("/transactions", BankerTransactionController.list);
 

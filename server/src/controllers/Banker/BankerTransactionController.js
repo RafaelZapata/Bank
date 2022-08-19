@@ -1,7 +1,8 @@
 import { ObjectId } from "mongodb";
 import Codes from "utilities/codes";
+import Transaction from "models/Transaction";
 
-const COLLECTION = "transaction";
+const COLLECTION = "transactions";
 
 export default class BankerTransactionController {
   // GET /banker/transactions[?=id]
@@ -12,14 +13,17 @@ export default class BankerTransactionController {
       let data = [];
 
       if (typeof id === "undefined") {
-        data = await collection.findAll().sort({ date: -1 });
+        data = await collection.find().sort({ date: -1 }).toArray();
       } else {
-        data = await collection.findAll({
+        data = await collection.find({
           $or: [{ origin: ObjectId(id) }, { destiny: ObjectId(id) }]
-        }).sort({ date: -1 });
+        }).sort({ date: -1 }).toArray();
       }
 
-      return res.json({ ...Codes.get(200), data });
+      return res.json({
+        ...Codes.get(200),
+        data: data.map(item => new Transaction(item))
+      });
     } catch (e) {
       console.log(e);
       return res.status(500).json(Codes.get(500));
