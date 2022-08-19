@@ -1,10 +1,10 @@
-import userRoutes from "./userRoutes";
-import transactionRoutes from "./transactionRoutes";
-import publicRoutes from "./publicRoutes";
+import bankerRoutes from "./banker";
+import publicRoutes from "./public";
+import clientRoutes from "./client";
 
 export default function applyRoutes(app) {
-  userRoutes(app);
-  transactionRoutes(app);
+  bankerRoutes(app);
+  clientRoutes(app);
 
   publicRoutes(app);
 }
