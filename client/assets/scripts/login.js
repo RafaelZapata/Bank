@@ -1,4 +1,4 @@
-async function getParameters() {
+async function login() {
     let emailInput = document.getElementById("inputEmail").value;
     let passwordInput = document.getElementById("inputPassword").value;
 
