@@ -6,15 +6,5 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home</title>
     </head>
-    <body>
-        <script>
-            const user = JSON.parse("http://localhost:7002/auth");
-
-            window.location.href = (function () {
-                if (typeof user === "object" && user !== null) return "pages/dashboard.html";
-
-                return "pages/login.html";
-            })();
-        </script>
-    </body>
+    <body></body>
 </html>
