@@ -19,7 +19,8 @@ async function login() {
     window.location.href = (function () {
         if (resultJson.status === true) {
             localStorage.setItem("@Authorization", resultJson.user.token);
-            return resultJson.user.role + ".html";
+            // return resultJson.user.role + ".html";
+            return "client/me.html";
         }
         return "pages/login.html";
     })();
