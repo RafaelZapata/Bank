@@ -1,14 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import "./styles/global.css";
-import Routes from "./Pages/Client/Me";
-import Login from "./Pages/Login";
-import Me from "./Pages/Client/Me";
+import Route from "./pages/routes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <Login />
+        <Route />
     </React.StrictMode>
 );
