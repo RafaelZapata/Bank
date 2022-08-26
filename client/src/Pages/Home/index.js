@@ -1,10 +1,16 @@
 import { useEffect } from "react";
-import { me } from "utilities/api/client";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-    useEffect(() => {
-        // me();
-    }, []);
+  const navigate = useNavigate();
+  
+  const onClick = () => navigate("/settings");
 
-    return <h1>Home</h1>;
+  return (
+    <section>
+      <h1>Home</h1>
+
+      <button onClick={ onClick }>Ir para settings</button>
+    </section>
+  );
 }
