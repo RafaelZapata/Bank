@@ -1,4 +1,5 @@
 import "dotenv/config";
+import cors from "cors";
 import express from "express";
 
 import applyRoutes from "routes";
@@ -8,19 +9,20 @@ const app = express();
 const port = 7002;
 
 app.use(express.json());
+app.use(cors());
 
 app.use(async (req, res, next) => {
-  try {
-    req.database = await connectDB();
-    next();
-  } catch (e) {
-    console.log(e);
-    next();
-  }
+    try {
+        req.database = await connectDB();
+        next();
+    } catch (e) {
+        console.log(e);
+        next();
+    }
 });
 
 applyRoutes(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 });
